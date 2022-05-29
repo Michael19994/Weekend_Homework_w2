@@ -7,37 +7,28 @@ class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room1 = Room("Pop Room")
         self.song1 = Song("Careless Whisper")
-        self.song2 = Song("Friday")
-        self.guest = Guest("Alex")
+        self.guest = Guest("Alex", 20)
         
     def test_has_room_name(self):
         self.assertEqual("Pop Room", self.room1.name)
     
-    def test_nobody_starts_in_room(self):
-        self.assertEqual(0, self.room1.guest_count())
+    def test_if_room_has_entry_fee(self):
+        self.assertEqual(10, self.room1.entry_cost)
 
-    def test_add_guest_to_room(self):
-        guest = Guest("Alex")
-        self.room1.add_guest(guest)
-        self.assertEqual(1, self.room1.guest_count())
+    def test_room_has_own_tab(self):
+        self.assertEqual(200, self.room1.tab)
 
-    def test_remove_guest_from_room(self):
-        guest = Guest("Alex")
-        self.room1.add_guest(guest)
-        self.room1.remove_guest(guest)
-        self.assertEqual(0, self.room1.guest_count())
+    def test_if_room_has_space(self):
+        self.assertEqual(True, self.room1.room_has_space())
 
-    def test_no_songs_in_room(self):
-        self.assertEqual(0, self.room1.song_count())
-
-    def test_add_songs_to_room(self):
-        songs = Song("Careless Whisper")
-        songs = Song("Friday")
-        self.room1.add_songs(songs)
-        self.assertEqual
-
-
-
+    def test_room_has_no_space(self):
+        self.room_full = Room("Pop Room")
+        self.room_full.max_amount_guests = 0
+        self.assertEqual(True, self.room1.room_has_space())
+    
+    def test_guest_has_money_to_get_in(self):
+        pass
+    
 
 
 

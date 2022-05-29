@@ -11,3 +11,4 @@ class TestSong(unittest.TestCase):
 
     def test_has_song2_name(self):
         self.assertEqual("Friday", self.song2.song_name)
+    
