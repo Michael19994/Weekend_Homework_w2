@@ -13,12 +13,12 @@ class Room:
     def room_has_name(self):
         return self.name
 
-    def cost_to_enter_room(self):
-        return self.guest.money > self.entry_cost
+    def cost_to_enter_room(self, guest):
+        return guest.money > self.entry_cost
 
-    def take_money_from_guest(self):
+    def take_money_from_guest(self, guest):
         if self.cost_to_enter_room:
-            self.guest.money -= self.entry_cost
+            guest.money -= self.entry_cost
     
     def guest_money_into_tab(self, money):
         self.tab += money
@@ -28,6 +28,13 @@ class Room:
 
     def add_guests(self, guest):
         self.guest_list.append(guest)
+    
+    def song_in_song_list(self, find_song):
+        for song in self.song_list:
+            if song.name == find_song:
+                return True
+        return False
+
     
 
 
